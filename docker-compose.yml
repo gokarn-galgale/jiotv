@@ -1,0 +1,16 @@
+services:
+  jtv-server:
+    image: ghcr.io/f-e-n-y-x/jiotv-server:latest
+    container_name: jtv-server
+    restart: unless-stopped
+    init: true
+    environment:
+      - SERVER_NAME=JTV server
+    ports:
+      - "29180:29180"
+      - "8443:8443"   # optional: HTTPS, only for DRM channels in the browser
+    volumes:
+      - jtv-data:/app/data
+
+volumes:
+  jtv-data:
